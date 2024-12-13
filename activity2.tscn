@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://dx6bbkwwjc1jk"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_anlg6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gipvg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4am0e"]
+albedo_color = Color(1, 0.783017, 0.898179, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_waxnx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asn08"]
+albedo_color = Color(0.105882, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vbbt0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ddvq"]
+albedo_color = Color(0.444157, 0.29053, 0.11173, 1)
+metallic = 0.15
+
+[sub_resource type="Environment" id="Environment_gohvq"]
+fog_enabled = true
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.552214, 0.713989, 0.0925189)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.0762618, -0.0470258, -0.0912397)
+mesh = SubResource("PlaneMesh_anlg6")
+
+[node name="housebody" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 3, 0, 0, 0, 2, -0.0316715, -0.0588593, 0.0539427)
+mesh = SubResource("BoxMesh_gipvg")
+surface_material_override/0 = SubResource("StandardMaterial3D_4am0e")
+
+[node name="roof" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00745219, 0.00390221, -5.28037, -0.000729264, 1.25663, 0.0164002, 3.0452, 0.000310458, -0.0129182, -0.0075779, 2.05388, 0.0688275)
+mesh = SubResource("PrismMesh_waxnx")
+surface_material_override/0 = SubResource("StandardMaterial3D_asn08")
+
+[node name="door" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.000497096, -0.00314452, -0.200068, 0.00168214, 1.00118, -0.00062886, 0.58649, -0.00287418, -0.00016777, 2.39487, 0.525392, 0.0350957)
+mesh = SubResource("BoxMesh_vbbt0")
+surface_material_override/0 = SubResource("StandardMaterial3D_3ddvq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, 1, 3, 5, 1)
+light_color = Color(0.631373, 0.45098, 0.87451, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gohvq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
